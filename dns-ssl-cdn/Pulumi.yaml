@@ -1,0 +1,3 @@
+name: dns-ssl-cdn
+runtime: nodejs
+description: A minimal AWS TypeScript Pulumi program
