@@ -116,3 +116,4 @@ alb.attachTarget("target-2", ec2_2);
 exports.associatePublicIpAddress = ec2_1.associatePublicIpAddress;
 exports.associatePublicIpAddress = ec2_2.associatePublicIpAddress;
 exports.endpoint = listener.endpoint.hostname;
+exports.arn = listener.arn;
