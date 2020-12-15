@@ -12,6 +12,7 @@ const config = {
     auth0Domain: stackConfig.require("auth0Domain"),
     auth0clientId: stackConfig.require("auth0clientId"),
     auth0audience: stackConfig.get("auth0audience"),
+    apiGatewayId: stackConfig.get("apiGatewayId"),
 };
 
 
@@ -71,6 +72,7 @@ let appStartupData = // <-- ADD THIS DEFINITION
     sed -i 's/REPLACE_DOMAIN/`+ config.auth0Domain + `/g' auth_config.json
     sed -i 's/REPLACE_CLIENT_ID/`+ config.auth0clientId + `/g' auth_config.json
     sed -i 's/REPLACE_AUDIENCE/`+ config.auth0audience + `/g' auth_config.json
+    sed -i 's/REPLACE_WITH_APIGATEWAY_ID/`+ config.apiGatewayId + `/g' app.js
     nohup python -m SimpleHTTPServer 80 &`;
 
 exports.appStartupData = appStartupData;
