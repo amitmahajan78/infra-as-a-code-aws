@@ -44,7 +44,7 @@ You can also see in the diagram above that we are going to use 2 separate automa
 
 For hosting and website automation, we wanted to have more control during the deployment, for example creating custom VPC, security groups, EC2 instance size etc. and Pulumi provides these capabilities while we an still use programing language of our choice. 
 
-:bangbang: Please understand that this deployment cost money and not every service used by this deployment will be applicable for free tier. Although you can clean-up all of the deployment using single command that will make sure you are not unnecessarily charged. Also, you can test backend services from you localhost that mean you don't need to deploy website or hosting services.
+:bangbang: Please understand that this deployment cost money and not every service used by this deployment will be applicable for free tier. Although you can clean-up all of the deployment using single command that will make sure you are not unnecessarily charged. Also, you can test backend services from you localhost that mean you don't need to deploy website or hosting services.:bangbang:
 
 if you still happy then move on!
 
@@ -76,9 +76,63 @@ folder contents:
 |addVote.js|lambda function for record the vote for selected song|
 |auth.js|validate the JQT token for protected API endpoints|
 
+1. Create 2 file 1) public_key, 2) secrets.json - these file contain the key and secret for **auth** function to validate the jwt token. 
 
+- public_key can be downloaded from your auth0 account by login into the account and goto Setting > Signing Keys > List of valid Keys. where you can click on the 3 dots and download "Signing Certificates", rename file to public_key and placed into *api-lambda-db* folder.
+- secrets.json contain you auth0 account's audience (or identifier), for that you have to create the API, provide the identfier and the use the same in secrets.json file.
+![](docs/API_Secret.png)     
 
+2. Run `npm install` to get all nodejs dependencies.
+3. As a final step, you can run following `serverless deploy`
 
+if you see the following output that means your deployment was successful. Please note down API/Endpoint ID.
+
+![](docs/Serverless_Backend_Deployment.png)
+
+4. You should be able to test following rest APIs now.
+
+- Test Add Vote API
+  - Get Auth token
+```js
+curl --request POST \
+  --url https://thesaastech.eu.auth0.com/oauth/token \
+  --header 'content-type: application/json' \
+  --data '{"client_id":"REPLACE_WITH_CLIENT_ID","client_secret":"REPLACE_WITH_CLIENT_SECRET","audience":"REPLACE_WITH_AUDIENCE","grant_type":"client_credentials"}'
+```
+Output:
+```js
+{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJpS2FOUmNvRHpOcnBnZzhuS1F2RSJ9.eyJpc3MiOiJodHRwczovL3RoZXNhYXN0ZWNoLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJEeTVZZkZzSnJJdTFyalRZbWhSNlozT2tYVXRBd0x6bkBjbGllbnRzIiwiYXVkIjoiYXNuZGtzYWhkODJ5aGRqa3NjIiwiaWF0IjoxNjA4MTM3MzQ0LCJleHAiOjE2MDgyMjM3NDQsImF6cCI6IkR5NVlmRnNKckl1MXJqVFltaFI2WjNPa1hVdEF3THpuIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.CCkRFpNiFWUQNcdaBfinSLGRRgyZU--nId8bvtODnxqjtLMCqHZeJ8wIxH62CDVaecPJ0hPgyuw_tLBmTjm-bceUnZ41LACt9CFCtEwVkM-sc08Nn9KVqOsdAk-xn8cfSpIipzP1hT6v3snrEFln3fvUYl0sUbRAgwDk6obriOMyJpY5q3QL4NhFm3A-lUDBMKYpIiGToau3m1S6hZJTHdC0YrEQeUn3k0v0F1Djg54dBcuvOZPbXSRg4-tjaDsHC7zV6j6aOIdHKY5vPBc4el6vZxvhTfrbr22ZoCR0sGsrgyL5ZIiCowvDhOWrHltZVbYcPhxbgiQg-JiUXpdzSw","expires_in":86400,"token_type":"Bearer"}
+```
+  - Call add vote api by using the JWT token.
+
+```js
+curl --request POST \
+  --url https://3pphn2qtm6.execute-api.eu-west-2.amazonaws.com/dev/song/vote \
+  --header 'content-type: application/json' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJpS2FOUmNvRHpOcnBnZzhuS1F2RSJ9.eyJpc3MiOiJodHRwczovL3RoZXNhYXN0ZWNoLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJEeTVZZkZzSnJJdTFyalRZbWhSNlozT2tYVXRBd0x6bkBjbGllbnRzIiwiYXVkIjoiYXNuZGtzYWhkODJ5aGRqa3NjIiwiaWF0IjoxNjA4MTM3MzQ0LCJleHAiOjE2MDgyMjM3NDQsImF6cCI6IkR5NVlmRnNKckl1MXJqVFltaFI2WjNPa1hVdEF3THpuIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.CCkRFpNiFWUQNcdaBfinSLGRRgyZU--nId8bvtODnxqjtLMCqHZeJ8wIxH62CDVaecPJ0hPgyuw_tLBmTjm-bceUnZ41LACt9CFCtEwVkM-sc08Nn9KVqOsdAk-xn8cfSpIipzP1hT6v3snrEFln3fvUYl0sUbRAgwDk6obriOMyJpY5q3QL4NhFm3A-lUDBMKYpIiGToau3m1S6hZJTHdC0YrEQeUn3k0v0F1Djg54dBcuvOZPbXSRg4-tjaDsHC7zV6j6aOIdHKY5vPBc4el6vZxvhTfrbr22ZoCR0sGsrgyL5ZIiCowvDhOWrHltZVbYcPhxbgiQg-JiUXpdzSw' \
+  --data '{"songName":"Some Song Name"}'
+
+```
+Output:
+```js
+{"votes":{"N":"1"}}
+```
+if you submit same request again and again, vote count will increase. but if you use invalid token then you should see authorization error:
+
+```js
+{"message":"Unauthorized"}
+``` 
+- We can also test list song endpoint, however that does not need authorization token as this is set-up as a public endpoint. 
+
+```js
+curl --request POST \
+ --url https://3pphn2qtm6.execute-api.eu-west-2.amazonaws.com/dev/votes \
+--header 'content-type: application/json'
+```
+Output:
+```json
+[{"songName":"humdard","votes":17},{"songName":"iktara","votes":25},{"songName":"kaipoche","votes":16},{"songName":"kabirsingh","votes":21},{"songName":"Some Song Name","votes":1}]
+```
 
 ## <a name="website">Deploying Website</a>
 
