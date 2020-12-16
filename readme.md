@@ -44,7 +44,9 @@ You can also see in the diagram above that we are going to use 2 separate automa
 
 For hosting and website automation, we wanted to have more control during the deployment, for example creating custom VPC, security groups, EC2 instance size etc. and Pulumi provides these capabilities while we an still use programing language of our choice. 
 
+::: warning
 :bangbang: Please understand that this deployment cost money and not every service used by this deployment will be applicable for free tier. Although you can clean-up all of the deployment using single command that will make sure you are not unnecessarily charged. Also, you can test backend services from you localhost that mean you don't need to deploy website or hosting services.:bangbang:
+:::
 
 if you still happy then move on!
 
@@ -133,6 +135,9 @@ Output:
 ```json
 [{"songName":"humdard","votes":17},{"songName":"iktara","votes":25},{"songName":"kaipoche","votes":16},{"songName":"kabirsingh","votes":21},{"songName":"Some Song Name","votes":1}]
 ```
+
+***that complete our backend service deployment. after this step, you should have 1 dynamodb table "songs", 3 lambda functions "addVote, listVotes and auth" and 2 Rest APIs "GET /votes and POST /song/vote" in your AWS account***
+
 
 ## <a name="website">Deploying Website</a>
 
