@@ -44,8 +44,7 @@ You can also see in the diagram above that we are going to use 2 separate automa
 
 For hosting and website automation, we wanted to have more control during the deployment, for example creating custom VPC, security groups, EC2 instance size etc. and Pulumi provides these capabilities while we an still use programing language of our choice. 
 
-::: warning
-:bangbang: Please understand that this deployment cost money and not every service used by this deployment will be applicable for free tier. Although you can clean-up all of the deployment using single command that will make sure you are not unnecessarily charged. Also, you can test backend services from you localhost that mean you don't need to deploy website or hosting services.:bangbang:
+**WARNING** :bangbang: Please understand that this deployment cost money and not every service used by this deployment will be applicable for free tier. Although you can clean-up all of the deployment using single command that will make sure you are not unnecessarily charged. Also, you can test backend services from you localhost that mean you don't need to deploy website or hosting services.:bangbang:
 :::
 
 if you still happy then move on!
