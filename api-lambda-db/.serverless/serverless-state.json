@@ -247,7 +247,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/node-vote-app/dev/1608019990369-2020-12-15T08:13:10.369Z/node-vote-app.zip"
+                "S3Key": "serverless/node-vote-app/dev/1608295440585-2020-12-18T12:44:00.585Z/node-vote-app.zip"
               },
               "FunctionName": "node-vote-app-dev-auth",
               "Handler": "s_auth.handler",
@@ -273,14 +273,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "AuthLambdaVersionZVu4XjiSGbD9zqZjpKuE2AZBns1pEjwpvYjzx8HCo": {
+          "AuthLambdaVersionQjG7blCHq1ZRgc8PxrEOLL9ta3pH76q4JteqxwMGNLw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AuthLambdaFunction"
               },
-              "CodeSha256": "rcba+gL9dUj7ct5dtKmkknI6AeH06sqX5gRq0EVAeY8="
+              "CodeSha256": "PhR5kiG2HJT7NVdV7xWNznRgX05hmmqVn8uUuWDQXeg="
             }
           },
           "GetSongVoteCountsLambdaFunction": {
@@ -290,7 +290,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/node-vote-app/dev/1608019990369-2020-12-15T08:13:10.369Z/node-vote-app.zip"
+                "S3Key": "serverless/node-vote-app/dev/1608295440585-2020-12-18T12:44:00.585Z/node-vote-app.zip"
               },
               "FunctionName": "node-vote-app-dev-getSongVoteCounts",
               "Handler": "s_getSongVoteCounts.handler",
@@ -316,14 +316,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetSongVoteCountsLambdaVersionZjQegBayvzT27PPmm0RHGyixqCDfPjqo9vkQhyuTLzg": {
+          "GetSongVoteCountsLambdaVersionPBhhGcyOn70bn62lySD2MnWfkPihpJPvHaFGM3BLPKE": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetSongVoteCountsLambdaFunction"
               },
-              "CodeSha256": "rcba+gL9dUj7ct5dtKmkknI6AeH06sqX5gRq0EVAeY8="
+              "CodeSha256": "PhR5kiG2HJT7NVdV7xWNznRgX05hmmqVn8uUuWDQXeg="
             }
           },
           "RecordSongVoteLambdaFunction": {
@@ -333,7 +333,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/node-vote-app/dev/1608019990369-2020-12-15T08:13:10.369Z/node-vote-app.zip"
+                "S3Key": "serverless/node-vote-app/dev/1608295440585-2020-12-18T12:44:00.585Z/node-vote-app.zip"
               },
               "FunctionName": "node-vote-app-dev-recordSongVote",
               "Handler": "s_recordSongVote.handler",
@@ -359,14 +359,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "RecordSongVoteLambdaVersionLxIgocwuhtBz9p7zl6M13rqScg8IPN2RsdMaUfpeplo": {
+          "RecordSongVoteLambdaVersionv2wbj4hFCbeZPozFCaR1hltLdcbiO3Vegt42IYo0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "RecordSongVoteLambdaFunction"
               },
-              "CodeSha256": "rcba+gL9dUj7ct5dtKmkknI6AeH06sqX5gRq0EVAeY8="
+              "CodeSha256": "PhR5kiG2HJT7NVdV7xWNznRgX05hmmqVn8uUuWDQXeg="
             }
           },
           "ApiGatewayRestApi": {
@@ -637,7 +637,7 @@
               "Type": "TOKEN"
             }
           },
-          "ApiGatewayDeployment1608019973497": {
+          "ApiGatewayDeployment1608295423833": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -872,7 +872,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/node-vote-app/dev/1608019990369-2020-12-15T08:13:10.369Z/custom-resources.zip"
+                "S3Key": "serverless/node-vote-app/dev/1608295440585-2020-12-18T12:44:00.585Z/custom-resources.zip"
               },
               "FunctionName": "node-vote-app-dev-custom-resource-apigw-cw-role",
               "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -998,19 +998,19 @@
           "AuthLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AuthLambdaVersionZVu4XjiSGbD9zqZjpKuE2AZBns1pEjwpvYjzx8HCo"
+              "Ref": "AuthLambdaVersionQjG7blCHq1ZRgc8PxrEOLL9ta3pH76q4JteqxwMGNLw"
             }
           },
           "GetSongVoteCountsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetSongVoteCountsLambdaVersionZjQegBayvzT27PPmm0RHGyixqCDfPjqo9vkQhyuTLzg"
+              "Ref": "GetSongVoteCountsLambdaVersionPBhhGcyOn70bn62lySD2MnWfkPihpJPvHaFGM3BLPKE"
             }
           },
           "RecordSongVoteLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RecordSongVoteLambdaVersionLxIgocwuhtBz9p7zl6M13rqScg8IPN2RsdMaUfpeplo"
+              "Ref": "RecordSongVoteLambdaVersionv2wbj4hFCbeZPozFCaR1hltLdcbiO3Vegt42IYo0"
             }
           },
           "ServiceEndpoint": {
@@ -1126,7 +1126,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "AuthLambdaVersionZVu4XjiSGbD9zqZjpKuE2AZBns1pEjwpvYjzx8HCo"
+        "versionLogicalId": "AuthLambdaVersionQjG7blCHq1ZRgc8PxrEOLL9ta3pH76q4JteqxwMGNLw"
       },
       "getSongVoteCounts": {
         "handler": "s_getSongVoteCounts.handler",
@@ -1164,7 +1164,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetSongVoteCountsLambdaVersionZjQegBayvzT27PPmm0RHGyixqCDfPjqo9vkQhyuTLzg"
+        "versionLogicalId": "GetSongVoteCountsLambdaVersionPBhhGcyOn70bn62lySD2MnWfkPihpJPvHaFGM3BLPKE"
       },
       "recordSongVote": {
         "handler": "s_recordSongVote.handler",
@@ -1210,7 +1210,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "RecordSongVoteLambdaVersionLxIgocwuhtBz9p7zl6M13rqScg8IPN2RsdMaUfpeplo"
+        "versionLogicalId": "RecordSongVoteLambdaVersionv2wbj4hFCbeZPozFCaR1hltLdcbiO3Vegt42IYo0"
       }
     },
     "resources": {
@@ -1279,7 +1279,7 @@
     "artifact": "/Users/amitmahajan/Workspace/Serverless/InfraAsACode-AWS/api-lambda-db/.serverless/node-vote-app.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/node-vote-app/dev/1608019990369-2020-12-15T08:13:10.369Z",
+    "artifactDirectoryName": "serverless/node-vote-app/dev/1608295440585-2020-12-18T12:44:00.585Z",
     "artifact": "node-vote-app.zip"
   }
 }

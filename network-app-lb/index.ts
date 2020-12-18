@@ -1,6 +1,6 @@
 "use strict";
 
-import { SpotDatafeedSubscription } from "@pulumi/aws/ec2";
+import { endpoints } from "@pulumi/aws/config";
 
 const pulumi = require("@pulumi/pulumi");
 const aws = require("@pulumi/aws");
@@ -75,8 +75,6 @@ let appStartupData = // <-- ADD THIS DEFINITION
     sed -i 's/REPLACE_WITH_APIGATEWAY_ID/`+ config.apiGatewayId + `/g' app.js
     nohup python -m SimpleHTTPServer 80 &`;
 
-exports.appStartupData = appStartupData;
-
 const ec2_1 = new aws.ec2.Instance("webserver-www-1", {
     instanceType: size,
     vpcSecurityGroupIds: [pulumi.output(sg.id)], // reference the security group resource above
@@ -115,7 +113,9 @@ alb.attachTarget("target-1", ec2_1);
 alb.attachTarget("target-2", ec2_2);
 
 
-exports.associatePublicIpAddress = ec2_1.associatePublicIpAddress;
-exports.associatePublicIpAddress = ec2_2.associatePublicIpAddress;
-exports.endpoint = listener.endpoint.hostname;
-exports.arn = listener.arn;
+
+exports.endpoint = pulumi.output(listener.endpoint.hostname);
+exports.arn = pulumi.output(alb.loadBalancer.dnsName);
+exports.alb_id = pulumi.output(alb.loadBalancer.arn);
+
+
