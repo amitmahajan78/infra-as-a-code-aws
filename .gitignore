@@ -3,3 +3,7 @@
 node_modules
 bin
 Pulumi.dev.yaml
+layers
+public_key
+secrets.json
+archive.zip
