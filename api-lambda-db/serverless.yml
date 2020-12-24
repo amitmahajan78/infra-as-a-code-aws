@@ -8,7 +8,7 @@ provider:
   region: eu-west-2
   environment:
     DYNAMODB_TABLE: songs
-    AUTH0_CLIENT_ID: ${file(./secrets.json):AUTH0_CLIENT_ID}
+    AUTH0_CLIENT_ID: ${file(./secrets.json):AUTH0_API_IDENTIFIER}
     AUTH0_CLIENT_PUBLIC_KEY: ${file(./public_key)}
   iamRoleStatements:
     - Effect: "Allow"
